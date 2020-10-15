@@ -40,10 +40,24 @@ class Airplane {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-class Person {
-
+class Person{
+  constructor(name, age){
+    this.stomach = [];
+    this.name = name;
+    this.age = age;
+  }
+  eat(someFood){
+    if(this.stomach.length < 10){
+    this.stomach.push(someFood);
+    }
+  }
+  poop(){
+    this.stomach = [];
+  }
+  toString(name,age){
+    return `${this.name}, ${this.age}`;
+  }
 }
-
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -59,8 +73,44 @@ class Person {
 */
 
 class Car {
-
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons){
+    this.tank += gallons;
+  }
+  drive(distance){
+    let distanceLeft = distance;
+    for(let i = 0; i < distance * this.milesPerGallon; i++){
+      
+      if(this.tank >= distanceLeft / this.milesPerGallon){
+        this.tank = this.tank - (1/this.milesPerGallon);
+        this.odometer += 1;
+        distanceLeft -= 1;
+      }
+    }
+  }
 }
+
+  drive(distance){
+    let distanceLeft = distance;
+    for(let i = 0; i < distance * this.milesPerGallon; i++){
+      
+      if(this.tank >= distanceLeft / this.milesPerGallon){
+        this.tank = this.tank - (1/this.milesPerGallon);
+        this.odometer += 1;
+        distanceLeft -= 1;
+      }
+    }
+  }
+
+  // if(this.tank - distance / this.milesPerGallon <= this.tank){
+    // this.odometer += distance;
+    // this.tank = this.tank - distance / this.milesPerGallon;
+    // }
 
 /*
   TASK 3
